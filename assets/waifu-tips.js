@@ -190,7 +190,10 @@ function initModel(waifuPath, type) {
     if (!live2d_settings.modelStorage || modelId == null) {
         var modelId = live2d_settings.modelId;
         var modelTexturesId = live2d_settings.modelTexturesId;
-    } loadModel(modelId, modelTexturesId);
+    } 
+    // loadModel(modelId, modelTexturesId);
+    loadlive2d('live2d', 'assets/aoba/model.json');
+
 }
 
 function loadModel(modelId, modelTexturesId) {
