@@ -192,17 +192,19 @@ function initModel(waifuPath, type) {
         var modelTexturesId = live2d_settings.modelTexturesId;
     } 
     // loadModel(modelId, modelTexturesId);
-    loadlive2d('live2d', 'assets/aoba/model.json');
+    loadlive2d('live2d', 'assets/katou/katou_01.model.json');
 
 }
-
+//切换模型时会执行的函数
 function loadModel(modelId, modelTexturesId) {
-    if (live2d_settings.modelStorage) {
-        localStorage.setItem('modelId', modelId);
+    // if (live2d_settings.modelStorage) {
+    //     localStorage.setItem('modelId', modelId);
         
-        if (modelTexturesId === undefined) modelTexturesId = 0;
-        localStorage.setItem('modelTexturesId', modelTexturesId);
-    } loadlive2d('live2d', live2d_settings.modelAPI+'get/?id='+modelId+'-'+modelTexturesId, (live2d_settings.showF12Status ? console.log('[Status]','live2d','模型',modelId+'-'+modelTexturesId,'加载完成'):null));
+    //     if (modelTexturesId === undefined) modelTexturesId = 0;
+    //     localStorage.setItem('modelTexturesId', modelTexturesId);
+    // } 
+    // loadlive2d('live2d', live2d_settings.modelAPI+'get/?id='+modelId+'-'+modelTexturesId, (live2d_settings.showF12Status ? console.log('[Status]','live2d','模型',modelId+'-'+modelTexturesId,'加载完成'):null));
+    loadlive2d('live2d', 'assets/aoba/model.json');
 }
 
 function loadTipsMessage(result) {
@@ -295,7 +297,7 @@ function loadTipsMessage(result) {
     }
     
     var waifu_tips = result.waifu;
-    
+    //----------------------------------------------------------------------------------
     function loadOtherModel() {
         var modelId = localStorage.getItem('modelId');
         var modelRandMode = live2d_settings.modelRandMode;
