@@ -21,7 +21,6 @@ window.live2d_settings = Array(); /*
 
 
 // 后端接口
-live2d_settings['modelAPI']             = '//live2d.fghrsh.net/api/';   // 自建 API 修改这里
 live2d_settings['tipsMessage']          = 'waifu-tips.json';            // 同目录下可省略路径
 live2d_settings['hitokotoAPI']          = 'lwl12.com';                  // 一言 API，可选 'lwl12.com', 'hitokoto.cn', 'jinrishici.com'(古诗词)
 
@@ -154,7 +153,7 @@ window.initModel=function(waifuPath, type) {
     } catch(err) { console.log('[Error] JQuery UI is not defined.') }
     
     live2d_settings.homePageUrl == 'auto' ? window.location.protocol+'//'+window.location.hostname+'/' : live2d_settings.homePageUrl;
-    if (window.location.protocol == 'file:' && live2d_settings.modelAPI.substr(0,2) == '//') live2d_settings.modelAPI = 'http:'+live2d_settings.modelAPI;
+    // if (window.location.protocol == 'file:' && live2d_settings.modelAPI.substr(0,2) == '//') live2d_settings.modelAPI = 'http:'+live2d_settings.modelAPI;
     
     $('.waifu-tool .fui-home').click(function (){
         //window.location = 'https://www.fghrsh.net/';
@@ -193,22 +192,16 @@ window.initModel=function(waifuPath, type) {
         var modelTexturesId = live2d_settings.modelTexturesId;
     } 
     // loadModel(modelId, modelTexturesId);
+    //初始时加载的模型函数
     loadlive2d('live2d', 'assets/katou/katou_01.model.json');
 
 }
 //切换模型时会执行的函数
 // function loadModel(modelId, modelTexturesId) {
 function loadModel(modelId) {
-    // if (live2d_settings.modelStorage) {
-    //     localStorage.setItem('modelId', modelId);
-        
-    //     if (modelTexturesId === undefined) modelTexturesId = 0;
-    //     localStorage.setItem('modelTexturesId', modelTexturesId);
-    // } 
-    // loadlive2d('live2d', live2d_settings.modelAPI+'get/?id='+modelId+'-'+modelTexturesId, (live2d_settings.showF12Status ? console.log('[Status]','live2d','模型',modelId+'-'+modelTexturesId,'加载完成'):null));
-    loadlive2d('live2d',modelId);
+loadlive2d('live2d',modelId);
 }
-
+//文字对话框函数
 function loadTipsMessage(result) {
     $.each(result.mouseover, function (index, tips){
         $(document).on("mouseover", tips.selector, function (){
@@ -300,44 +293,29 @@ function loadTipsMessage(result) {
     
     var waifu_tips = result.waifu;
     var models = ['assets/katou/katou_01.model.json','assets/aoba/model.json']
-    //----------------------------------------------------------------------------------
+    //点击加载模型的函数----------------------------------------------------------------------------------
     function loadOtherModel() {
-        // var modelId = localStorage.getItem('modelId');
-        // var modelRandMode = live2d_settings.modelRandMode;
-        
-        // $.ajax({
-        //     cache: modelRandMode == 'switch' ? true : false,
-        //     url: live2d_settings.modelAPI+modelRandMode+'/?id='+modelId,
-        //     dataType: "json",
-        //     success: function(result) {
-        //         loadModel(result.model['id']);
-        //         var message = result.model['message'];
-        //         $.each(waifu_tips.model_message, function(i,val) {if (i==result.model['id']) message = getRandText(val)});
-        //         showMessage(message, 3000, true);
-        //     }
-        // });
-        // loadModel(result.model['id']);
         let temp = models[Math.floor(Math.random()*2)]
         loadModel(temp);
     }
-    
-    function loadRandTextures() {
-        var modelId = localStorage.getItem('modelId');
-        var modelTexturesId = localStorage.getItem('modelTexturesId');
-        var modelTexturesRandMode = live2d_settings.modelTexturesRandMode;
+    //切换材质函数
+    // function loadRandTextures() {
+    //     var modelId = localStorage.getItem('modelId');
+    //     var modelTexturesId = localStorage.getItem('modelTexturesId');
+    //     var modelTexturesRandMode = live2d_settings.modelTexturesRandMode;
         
-        $.ajax({
-            cache: modelTexturesRandMode == 'switch' ? true : false,
-            url: live2d_settings.modelAPI+modelTexturesRandMode+'_textures/?id='+modelId+'-'+modelTexturesId,
-            dataType: "json",
-            success: function(result) {
-                if (result.textures['id'] == 1 && (modelTexturesId == 1 || modelTexturesId == 0))
-                    showMessage(waifu_tips.load_rand_textures[0], 3000, true);
-                else showMessage(waifu_tips.load_rand_textures[1], 3000, true);
-                loadModel(modelId, result.textures['id']);
-            }
-        });
-    }
+    //     $.ajax({
+    //         cache: modelTexturesRandMode == 'switch' ? true : false,
+    //         url: live2d_settings.modelAPI+modelTexturesRandMode+'_textures/?id='+modelId+'-'+modelTexturesId,
+    //         dataType: "json",
+    //         success: function(result) {
+    //             if (result.textures['id'] == 1 && (modelTexturesId == 1 || modelTexturesId == 0))
+    //                 showMessage(waifu_tips.load_rand_textures[0], 3000, true);
+    //             else showMessage(waifu_tips.load_rand_textures[1], 3000, true);
+    //             loadModel(modelId, result.textures['id']);
+    //         }
+    //     });
+    // }
     
     /* 检测用户活动状态，并在空闲时显示一言 */
     if (live2d_settings.showHitokoto) {
@@ -407,7 +385,7 @@ function loadTipsMessage(result) {
     }
     
     $('.waifu-tool .fui-eye').click(function (){loadOtherModel()});
-    $('.waifu-tool .fui-user').click(function (){loadRandTextures()});
+    // $('.waifu-tool .fui-user').click(function (){loadRandTextures()}); //切换材质函数
     $('.waifu-tool .fui-chat').click(function (){showHitokoto()});
 }
 })()
