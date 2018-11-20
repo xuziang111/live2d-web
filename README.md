@@ -2,7 +2,7 @@
 
 - Live2D 看板娘插件 (https://www.fghrsh.net/post/123.html) 的前端 HTML 源码
 - fork自(https://github.com/fghrsh/live2d_demo)
-- 魔改成自己用的
+- 魔改成自己用的，删除除一言外大部分的后端依赖
 
 ### 特性
 
