@@ -2,7 +2,7 @@
 
 - Live2D 看板娘插件 (https://www.fghrsh.net/post/123.html) 的前端 HTML 源码
 - fork自(https://github.com/fghrsh/live2d_demo)
-- 魔改成直接github page可直接用的~~(其实就是傻瓜版本)~~，删除除一言外大部分的后端依赖
+- 魔改成直接github page可直接用的~~其实就是傻瓜版本~~，删除除一言外大部分的后端依赖
 - 适用于github pages和直接用自己服务器存放模型的人
 - 不适用于那些只能引入script的地方，因为需要地方存放模型
 
