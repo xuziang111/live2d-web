@@ -2,7 +2,9 @@
 
 - Live2D 看板娘插件 (https://www.fghrsh.net/post/123.html) 的前端 HTML 源码
 - fork自(https://github.com/fghrsh/live2d_demo)
-- 魔改成自己用的，删除除一言外大部分的后端依赖
+- 魔改成直接github page可直接用的~~(其实就是傻瓜版本)~~，删除除一言外大部分的后端依赖
+- 适用于github pages和直接用自己服务器存放模型的人
+- 不适用于那些只能引入script的地方，因为需要地方存放模型
 
 ### 特性
 
@@ -111,14 +113,12 @@ try {
 
 - 后端接口
 
-  - `live2d_settings['modelAPI']`<br>看板娘 API 地址，默认值 `'//live2d.fghrsh.net/api/'`
-
   - `live2d_settings['tipsMessage']`<br>提示语读取路径，默认值 `'waifu-tips.json'` (一般在 `initModel` 时指定)
 
   - `live2d_settings['hitokotoAPI']`<br>一言 API 接口，可选 `'lwl12.com'`，`'hitokoto.cn'`，`'jinrishici.com'` (古诗词)
 
-- 默认模型
- 
+- 默认模型(暂时废弃)
+
   - `live2d_settings['modelId']`<br>默认模型(分组) ID，可在 Demo 页 `[F12]` 呼出 `控制台(Console)` 找到
 
   - `live2d_settings['modelTexturesId']`<br>默认材质(模型) ID，可在 Demo 页 `[F12]` 呼出 `控制台(Console)` 找到
@@ -128,13 +128,13 @@ try {
   - `live2d_settings['showToolMenu']`，      显示工具栏，     `true` | `false`
   - `live2d_settings['canCloseLive2d']`，    关闭看板娘 按钮，`true` | `false`
   - `live2d_settings['canSwitchModel']`，    切换模型 按钮，  `true` | `false`
-  - `live2d_settings['canSwitchTextures']`， 切换材质 按钮，  `true` | `false`
+  - `live2d_settings['canSwitchTextures']`， 切换材质 按钮，  `true` | `false`(暂时废弃)
   - `live2d_settings['canSwitchHitokoto']`， 切换一言 按钮，  `true` | `false`
   - `live2d_settings['canTakeScreenshot']`， 看板娘截图 按钮，`true` | `false`
   - `live2d_settings['canTurnToHomePage']`， 返回首页 按钮，  `true` | `false`
   - `live2d_settings['canTurnToAboutPage']`，跳转关于页 按钮，`true` | `false`
 
-- 模型切换模式
+- 模型切换模式(暂时废弃)
 
   - `live2d_settings['modelStorage']`，记录 ID (刷新后恢复)，`true` | `false`
   - `live2d_settings['modelRandMode']`，模型切换，可选 `'rand'` (随机) | `'switch'` (顺序)
