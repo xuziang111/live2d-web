@@ -9,9 +9,11 @@ try {
     live2d_settings['modelTexturesId'] = 1;          // 默认材质 ID
     live2d_settings['modelStorage'] = false;         // 不储存模型 ID
     live2d_settings['waifuEdgeSide'] = 'right:0'
-    live2d_settings['waifuSize'] = "200x250"
+    live2d_settings['waifuSize'] = "250x312"
     live2d_settings['waifuToolTop'] = '-60px' 
     live2d_settings['waifuTipsSize'] = '200x70';
+    live2d_settings['canSwitchTextures'] = false;
+    live2d_settings['canTurnToAboutPage'] = false;
     /* 在 initModel 前添加 */
     initModel('assets/waifu-tips.json');
 } catch(err) { console.log('[Error] JQuery is not defined.') }
